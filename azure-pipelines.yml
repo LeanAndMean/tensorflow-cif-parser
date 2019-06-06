@@ -28,7 +28,7 @@ steps:
 - bash: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: 'Add conda to PATH'
 
-- script |
+- script: |
     conda update conda
     conda init
   displayName: 'Update and initialize Conda'
