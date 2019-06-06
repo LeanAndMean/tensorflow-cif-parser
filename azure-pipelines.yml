@@ -33,7 +33,7 @@ steps:
   displayName: 'Update Conda'
 
 - script: |
-    conda init
+    conda init --all
   displayName: 'Initialize Conda'
 
 - script: |
