@@ -24,13 +24,19 @@ steps:
     versionSpec: '$(python.version)'
   displayName: 'Use Python $(python.version)'
 
+- bash: echo "##vso[task.prependpath]/usr/share/miniconda/bin"
+  displayName: 'Add conda to PATH'
+
 - script: |
+    conda create --yes --quiet --name tensorflow-cif-parser python=$PYTHON_VERSION
+    conda activate tensorflow-cif-parser
     python -m pip install --upgrade pip
     python -m pip install setuptools
     python -m pip install .
   displayName: 'Install dependencies'
 
 - script: |
+    conda activate tensorflow-cif-parser
     python setup.py test --addopts '--junitxml=unittestresults.xml'
   displayName: 'Run unit tests'
 
