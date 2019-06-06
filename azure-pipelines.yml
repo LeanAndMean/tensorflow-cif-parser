@@ -25,7 +25,7 @@ steps:
     architecture: 'x64'
   displayName: 'Use Python $(python.version)'
 
-- bash: echo "##vso[task.prependpath]/usr/share/miniconda/bin"
+- bash: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: 'Add conda to PATH'
 
 - script: |
