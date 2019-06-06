@@ -38,13 +38,13 @@ steps:
 
 - script: |
     conda create --yes --quiet --name tensorflow-cif-parser python=$PYTHON_VERSION
-    conda activate tensorflow-cif-parser
+    source activate tensorflow-cif-parser
     python -m pip install --upgrade pip
     python -m pip install .
   displayName: 'Install dependencies'
 
 - script: |
-    conda activate tensorflow-cif-parser
+    source activate tensorflow-cif-parser
     python setup.py test --addopts '--junitxml=unittestresults.xml'
   displayName: 'Run unit tests'
 
