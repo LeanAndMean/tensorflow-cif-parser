@@ -17,7 +17,8 @@ from tensorflow_cif_parser.data.augmentation.rotation\
 )
 @profile_with_pytinstrument
 def test_random_uniform_to_3d_rotation_mtx(test_loops):
-    """Generates random rotation matrices and tests that they are all different
+    """Generates random rotation matrices and tests that they are all
+    different. Test complexity is O(N^2) due to the pairwise comparisons.
     Parameters
     ----------
     test_loops: int
@@ -56,6 +57,7 @@ def test_random_uniform_to_3d_rotation_mtx(test_loops):
 @profile_with_pytinstrument
 def test_random_3d_rotation(coordinate_count):
     """Generates a random set of coordinates and applies a random rotation.
+    Test passes if coordinates are not in the same location after rotation.
     Parameters
     ----------
     coordinate_count: int
