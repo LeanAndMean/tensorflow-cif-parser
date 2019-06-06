@@ -8,7 +8,7 @@ trigger:
 - azure-pipelines
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'Ubuntu-16.04'
 strategy:
   matrix:
     Python35:
@@ -22,6 +22,7 @@ steps:
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(python.version)'
+    architecture: 'x64'
   displayName: 'Use Python $(python.version)'
 
 - bash: echo "##vso[task.prependpath]/usr/share/miniconda/bin"
@@ -31,7 +32,6 @@ steps:
     conda create --yes --quiet --name tensorflow-cif-parser python=$PYTHON_VERSION
     conda activate tensorflow-cif-parser
     python -m pip install --upgrade pip
-    python -m pip install setuptools
     python -m pip install .
   displayName: 'Install dependencies'
 
