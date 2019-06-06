@@ -5,7 +5,6 @@
 
 trigger:
 - master
-- azure-pipelines
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -25,26 +24,12 @@ steps:
     architecture: 'x64'
   displayName: 'Use Python $(python.version)'
 
-- bash: echo "##vso[task.prependpath]$CONDA/bin"
-  displayName: 'Add conda to PATH'
-
 - script: |
-    conda update conda --yes --quiet
-  displayName: 'Update Conda'
-
-- script: |
-    conda init --all
-  displayName: 'Initialize Conda'
-
-- script: |
-    conda create --yes --quiet --name tensorflow-cif-parser python=$PYTHON_VERSION
-    source activate tensorflow-cif-parser
     python -m pip install --upgrade pip
-    python -m pip install .
+    pip install -e .
   displayName: 'Install dependencies'
 
 - script: |
-    source activate tensorflow-cif-parser
     python setup.py test --addopts '--junitxml=unittestresults.xml'
   displayName: 'Run unit tests'
 
