@@ -1,15 +1,23 @@
 # -*- coding: utf-8 -*-
+import sys
 import os
-import glob
 import pytest
+
+# Make helper utilities importable from all tests.
+sys.path.append(
+    os.path.join(
+        os.path.dirname(__file__),
+        'helpers'
+    )
+)
 
 
 @pytest.fixture(
     scope="module",
     params=[
-        "data/1511812_butane.cif",
-        "data/4501704_benzene.cif",
-        "data/4503066_methanol.cif",
+        "test_data/1511812_butane.cif",
+        "test_data/4501704_benzene.cif",
+        "test_data/4503066_methanol.cif",
     ]
 )
 def cif_path(request):

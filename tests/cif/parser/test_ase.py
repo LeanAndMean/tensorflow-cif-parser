@@ -1,22 +1,6 @@
 # -*- coding: utf-8 -*-
-import functools
-from pyinstrument import Profiler
+from utils import profile_with_pytinstrument
 from tensorflow_cif_parser.cif.parser.ase import parse_file as ase_parser
-
-
-def profile_with_pytinstrument(func):
-    @functools.wraps(func)
-    def pytinstrument_decorator(*args, **kwargs):
-        # Before function is called.
-        profiler = Profiler()
-        profiler.start()
-        # Call function.
-        func_return = func(*args, **kwargs)
-        # After function is called.
-        profiler.stop()
-        print(profiler.output_text(unicode=False, color=True))
-        return func_return
-    return pytinstrument_decorator
 
 
 @profile_with_pytinstrument
@@ -30,6 +14,7 @@ def test_ase_parser(cif_path):
     print("Sites:")
     for site_idx, site in enumerate(ase_atoms):
         print("  {}  {}".format(
-            site_idx,
-            str(site)
-        ))
+                site_idx,
+                str(site)
+            )
+        )
