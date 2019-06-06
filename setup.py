@@ -6,7 +6,7 @@ setup(
     name='tensorflow-cif-parser',
     version='0.1',
     description='A Crystal Information File (CIF) parser in the TensorFlow'
-        ' Datasets API.',
+                ' Datasets API.',
     url='http://github.com/LeanAndMean/tensorflow-cif-parser',
     author='Kevin Ryan',
     author_email='KevinRyan7926+tensorflow-cif-parser@gmail.com',
@@ -17,7 +17,7 @@ setup(
         "ase",
     ],
     setup_requires=["pytest-runner"],
-    tests_require=["pytest","pyinstrument"],
+    tests_require=["pytest", "pyinstrument"],
     include_package_data=True,
     zip_safe=False
 )
