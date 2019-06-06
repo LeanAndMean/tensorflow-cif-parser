@@ -29,9 +29,12 @@ steps:
   displayName: 'Add conda to PATH'
 
 - script: |
-    conda update conda
+    conda update conda --yes --quiet
+  displayName: 'Update Conda'
+
+- script: |
     conda init
-  displayName: 'Update and initialize Conda'
+  displayName: 'Initialize Conda'
 
 - script: |
     conda create --yes --quiet --name tensorflow-cif-parser python=$PYTHON_VERSION
