@@ -144,6 +144,11 @@ def create_equal_sampling_atom_dataset(
     ignore_file_errors: bool
         If True, files that fail to load are ignored. Useful for automatically
         filtering out bad files in a dataset.
+    repeat: None or int
+        Number of times to repeat each unique element's dataset. Defaults to
+        None, which corresponds to infinite repeats.
+        NOTE: Using a positive integer with an unbalanced dataset will result
+        in less common elements appearing only at the start of the dataset.
     Returns
     -------
     tf.data.Dataset
